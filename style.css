@@ -1,0 +1,264 @@
+:root {
+  --bg-color: #f4f4f4;
+  --text-color: #333;
+  --card-bg: #fff;
+  --accent: #6a0dad;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+  transition: all 0.3s ease;
+}
+
+/* Dark Mode Toggle */
+.toggle-container {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 1000;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0;
+  right: 0; bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 24px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px; width: 18px;
+  left: 3px; bottom: 3px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: var(--accent);
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 40px 20px;
+  background: linear-gradient(to right, #6a0dad, #ff69b4);
+  color: white;
+}
+
+.profile-pic {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: fill;
+  margin-bottom: 10px;
+}
+
+.resume-btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: white;
+  color: var(--accent);
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.tagline {
+  font-size: 1.2em;
+  margin: 10px 0;
+}
+
+/* Main Container */
+.container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px;
+}
+
+.section {
+  margin: 40px 0;
+}
+
+/* Grids */
+.skills-grid,
+.cert-grid,
+.badge-grid,
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+}
+
+.skills-grid span,
+.cert-card,
+.badge-card,
+.project-card {
+  background: var(--card-bg);
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+  text-align: center;
+}
+
+.skills-grid span:hover,
+.cert-card:hover,
+.badge-card:hover,
+.project-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.cert-card,
+.badge-card {
+  border-left: 6px solid var(--accent);
+}
+
+.badge-card {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Contact Form */
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form input,
+form textarea {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+form button {
+  padding: 10px;
+  background-color: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9em;
+  color: #666;
+}
+
+/* Timeline */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.timeline-item {
+  background: var(--card-bg);
+  padding: 15px;
+  border-left: 6px solid var(--accent);
+  border-radius: 10px;
+}
+.timeline-date {
+  font-weight: bold;
+  color: var(--accent);
+}
+
+/* Social Links */
+.social-links {
+  margin-top: 15px;
+}
+.social-links a {
+  margin: 0 10px;
+  color: white;
+  background: var(--accent);
+  padding: 8px 12px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+}
+.social-links a:hover {
+  background: #ff69b4;
+}
+
+/* Project Hover Reveal */
+.project-card {
+  position: relative;
+  overflow: hidden;
+}
+.project-hover {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: var(--accent);
+  color: white;
+  padding: 10px;
+  transition: top 0.3s ease;
+  pointer-events: none;
+}
+.project-card:hover .project-hover {
+  top: 0;
+  pointer-events: auto;
+}
+
+/* View Code Link Styling */
+.project-hover a {
+  color: #ffffff;
+  text-decoration: underline;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.project-hover a:hover {
+  color: #ffeb3b;
+}
+
+/* Confetti Animation */
+.confetti {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, #ff69b4, #6a0dad);
+  border-radius: 50%;
+  animation: pop 0.6s ease-out;
+  z-index: 9999;
+}
+@keyframes pop {
+  0% { transform: scale(0); opacity: 0; }
+  50% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(1); opacity: 0; }
+}
